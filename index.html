@@ -11,28 +11,36 @@
 <header class="topbar">
   <img class="logo" src="./assets/logo-radio-inova-abc.jfif" alt="Logo Rádio INOVA ABC">
   <div><div class="eyebrow">RÁDIO ONLINE • RIBEIRÃO PIRES E GRANDE ABC</div><h1>Rádio <span>INOVA ABC</span></h1><p>A informação que conecta o ABC</p></div>
-  <div class="live"><i></i> RÁDIO ONLINE</div>
+  <div class="live" id="stationStatus" role="status" aria-live="polite"><i></i> STREAMING A CONFIGURAR</div>
 </header>
 <main>
   <section class="hero">
     <div class="hero-copy"><span class="pill">SUA RÁDIO, SUA REGIÃO</span><h2>O ABC conectado<br><em>em um só lugar.</em></h2><p>Música, informação regional, serviços públicos e a voz dos moradores.</p></div>
     <div class="player-card">
-      <div class="player-title"><div><small>PLAYER • MÚSICA E TRANSMISSÃO</small><h3 id="trackTitle">Escolha uma faixa</h3><p id="trackArtist">Adicione áudios à pasta dados/musicas</p></div><div class="disc">♫</div></div>
-      <audio id="audio" controls preload="metadata" crossorigin="anonymous"></audio><div class="stream-controls"><label for="streamUrl">Endereço do streaming ao vivo (opcional)</label><div class="stream-row"><input id="streamUrl" type="url" placeholder="https://servidor:porta/stream" autocomplete="url"><button id="connectStream" type="button">Conectar ao vivo</button></div><small>Para transmissão 24h, configure um servidor de streaming e informe aqui o endereço público.</small></div>
-      <div class="player-note">No GitHub Pages, adicione arquivos MP3 à pasta site/musicas e atualize playlist.json. A transmissão ao vivo exige um endereço de streaming público.</div>
+      <div class="player-title"><div><small>PLAYER • MÚSICA E TRANSMISSÃO</small><h3 id="trackTitle">Escolha uma faixa</h3><p id="trackArtist">A transmissão ao vivo será ativada após configurar o servidor.</p></div><div class="disc">♫</div></div>
+      <audio id="audio" controls preload="none" aria-label="Player de áudio da Rádio INOVA ABC"></audio>
+      <div class="stream-controls">
+        <label for="streamUrl">Endereço do streaming ao vivo</label>
+        <div class="stream-row">
+          <input id="streamUrl" type="url" placeholder="Será configurado após criar a estação" autocomplete="url" aria-describedby="streamHelp">
+          <button id="connectStream" type="button">Ouvir rádio ao vivo</button>
+        </div>
+        <small id="streamHelp">O endereço será preenchido quando o servidor de streaming estiver pronto. Este campo não cria a transmissão sozinho.</small>
+      </div>
+      <div class="player-note">A programação automática 24h será executada no servidor de rádio. Os MP3 locais do seu computador não ficam disponíveis ao público até serem enviados ao sistema de streaming.</div>
     </div>
   </section>
   <section class="section">
-    <div class="section-head"><div><span class="eyebrow blue">ACOMPANHE</span><h2>Últimas notícias</h2><p>Itens obtidos das fontes configuradas. Confira a publicação original.</p></div><button id="refreshNews">↻ Atualizar notícias</button></div>
+    <div class="section-head"><div><span class="eyebrow blue">ACOMPANHE</span><h2>Últimas notícias</h2><p>Notícias regionais obtidas de fontes externas. Consulte sempre a matéria original.</p></div><button id="refreshNews">↻ Atualizar notícias</button></div>
     <div id="newsStatus" class="status">Clique em “Atualizar notícias” para consultar as fontes configuradas.</div>
     <div id="newsList" class="news-grid"></div>
   </section>
   <section class="two-col">
     <div class="panel"><div class="section-head compact"><div><span class="eyebrow blue">BIBLIOTECA</span><h2>Playlist disponível</h2></div><button class="secondary" id="refreshMusic">Atualizar</button></div><div id="musicList" class="music-list"><p class="muted">Carregando biblioteca…</p></div></div>
-    <div class="panel"><span class="eyebrow blue">PROGRAMAÇÃO</span><h2>Conexão com o ABC</h2><div class="schedule"><div><b>Manhã no ABC</b><span>Música e serviços</span></div><div><b>Giro Regional</b><span>Notícias verificadas</span></div><div><b>Conexão Ribeirão Pires</b><span>Informações locais</span></div><div><b>Música sem Parar</b><span>Seleção musical</span></div><p class="muted">Grade demonstrativa: horários e programas serão configurados na próxima etapa.</p></div></div>
+    <div class="panel"><span class="eyebrow blue">PROGRAMAÇÃO</span><h2>Conexão com o ABC</h2><div class="schedule"><div><b>Manhã no ABC</b><span>Música e serviços</span></div><div><b>Giro Regional</b><span>Notícias verificadas</span></div><div><b>Conexão Ribeirão Pires</b><span>Informações locais</span></div><div><b>Música sem Parar</b><span>Seleção musical</span></div><p class="muted">Programação ilustrativa. Os horários definitivos serão publicados após a configuração da grade da rádio.</p></div></div>
   </section>
-  <section class="community"><div><span class="eyebrow">PARTICIPAÇÃO COMUNITÁRIA</span><h2>A Voz do Bairro</h2><p>Tem uma sugestão de pauta, evento ou informação de interesse público? Prepare sua contribuição para a equipe da rádio.</p></div><a class="button-link" href="mailto:contato@inovaabc.example?subject=Sugest%C3%A3o%20de%20pauta%20-%20R%C3%A1dio%20INOVA%20ABC">Enviar sugestão</a></section>
-  <footer><img src="./assets/logo-radio-inova-abc.jfif" alt=""><div><b>Rádio INOVA ABC</b><p>A informação que conecta o ABC.</p><small>Projeto experimental. Notícias devem ser verificadas e músicas utilizadas conforme suas licenças.</small></div><span id="clock"></span></footer>
+  <section class="community"><div><span class="eyebrow">PARTICIPAÇÃO COMUNITÁRIA</span><h2>A Voz do Bairro</h2><p>Tem uma sugestão de pauta, evento ou informação de interesse público? Prepare sua contribuição para a equipe da rádio.</p></div><a class="button-link" href="https://github.com/maparibeiraopires-source/Radio_Inova_ABC/issues/new" target="_blank" rel="noopener noreferrer">Enviar sugestão</a></section>
+  <footer><img src="./assets/logo-radio-inova-abc.jfif" alt=""><div><b>Rádio INOVA ABC</b><p>A informação que conecta o ABC.</p><small>Projeto em implantação. Notícias devem ser conferidas nas fontes originais e músicas utilizadas conforme as licenças aplicáveis.</small></div><span id="clock"></span></footer>
 </main>
 <script src="./app.js"></script>
 </body></html>
